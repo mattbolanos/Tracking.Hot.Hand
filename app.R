@@ -1,3 +1,4 @@
+#Load packages
 library(tidyverse)
 library(extrafont)
 library(shinyWidgets)
@@ -24,15 +25,16 @@ library(DT)
 library(reshape2)
 library(janitor)
 
+#Connect to db
 db <- 'postgres' 
 
-host_db <- 'nba-shots-hot-hand.crmgvw22m9mc.us-east-2.rds.amazonaws.com' 
+host_db <- [redacted]
 
-db_port <- '5432'  
+db_port <- [redacted]    
 
-db_user <- 'mattbolanos'  
+db_user <- [redacted]  
 
-db_password <- 'General30!'
+db_password <- [redacted]  
 
 con <- dbConnect(RPostgres::Postgres(), dbname = db, host=host_db, port=db_port, user=db_user, password=db_password)  
 
@@ -40,6 +42,7 @@ input_columns <- dbGetQuery(con, "SELECT shooter,slug_season FROM streak_names_a
 
 plan('multicore') 
 
+#User interface
 ui <- navbarPage(
   "NBA Hot Hand Analysis",
   tabPanel("Welcome",
@@ -228,7 +231,7 @@ ui <- navbarPage(
   
   
   
-
+#Server
 server <- function(input, output) {
   
   plan('multicore') 
@@ -245,6 +248,7 @@ server <- function(input, output) {
     filter(yearSeasonLast > 2014) %>% 
     select(urlPlayerHeadshot,namePlayer)
   
+  #Draw Court h/t https://thef5.substack.com/people/479475-owen-phillips
   circle_points = function(center = c(0, 0), radius = 1, npoints = 360) {
     angles = seq(0, 2 * pi, length.out = npoints)
     return(data_frame(x = center[1] + radius * cos(angles),
@@ -383,7 +387,7 @@ server <- function(input, output) {
   }
   
   
-  
+  #First tab plot
   output$plot1 <- renderPlot({
     
     
@@ -449,6 +453,7 @@ server <- function(input, output) {
                fgm = as.numeric(is_shot_made),
                shot_value = ifelse(zone_basic %in% c("Above the Break 3", "Backcourt", "Left Corner 3", "Right Corner 3"), 3, 2))
       
+      #hexbin calcs h/t https://thef5.substack.com/people/479475-owen-phillips
       hex_bounds <- function(x, binwidth) {
         c(
           plyr::round_any(min(x), binwidth, floor) - 1e-6,
@@ -627,7 +632,7 @@ server <- function(input, output) {
   
   
   
-  
+  #First tab gt table
   output$table1 <- render_gt({
       
       
@@ -786,7 +791,7 @@ server <- function(input, output) {
 
   
   
-  
+  #Second tab table
   output$table2 <- DT::renderDataTable({
     
     
@@ -859,20 +864,21 @@ server <- function(input, output) {
       select(12,1,7,10,9,6,2,3,11) %>% 
       arrange(desc(streak_fga))
     
+    #Configure color gradient
     color_col <-final_data[6:6]
     
-    (brks <- quantile(color_col, probs = seq(0, 1, .01), na.rm = TRUE)) # provide numeric vector
-    (max_val <-max(color_col,na.rm=TRUE))
+    brks <- quantile(color_col, probs = seq(0, 1, .01), na.rm = TRUE))
+    max_val <-max(color_col,na.rm=TRUE)
     
-    (clrs_rmp <- colorRamp(c("lightskyblue","red"))(c(0,brks/max_val)))
+    clrs_rmp <- colorRamp(c("lightskyblue","red"))(c(0,brks/max_val))
     
-    (clrs_df <- clrs_rmp %>% 
+    clrs_df <- clrs_rmp %>% 
         as_tibble(.name_repair ="minimal") %>% 
         setNames(nm=c("r","g","b")) %>% 
         mutate_all(~as.character(round(.,digits=0)))  %>% mutate(mycolor=paste0("rgb(",
                                                                                 paste(r,g,b,sep = ","),
-                                                                                ")")))
-    (clrs <- pull(clrs_df,mycolor))
+                                                                                ")"))
+    clrs <- pull(clrs_df,mycolor)
     
     
     
