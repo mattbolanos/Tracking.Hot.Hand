@@ -54,137 +54,137 @@ ui <- navbarPage(
            strong("Introduction", style = "font-size:24px;font-family:Georgia; color:black; font-style: italic"),
            br(),
            p("This application summarizes and visualizes some of my research 
-             surrounding the infamous “Hot Hand Fallacy” in basketball. 
-             The fallacy stems from the idea that a player has an increased 
-             probability of making their next shot if they are “on fire”, or in other 
-             words have made their previous couple of shots.",
+             surrounding the infamous “Hot Hand Fallacy”. The fallacy stems from 
+             the concept that one is “hot” or “cold” based on past performance, 
+             even if it has no influence on future outcomes. In basketball, 
+             the Hot Hand is the idea that a player has an increased 
+             probability of making their next shot if they are “on fire”, i.e., 
+             they have made their several previous shots.",
              style= "font-size:16px; font-family:Arial;color:black"),
-           p("There have been numerous studies dedicated to investigating the Hot Hand, 
-             from the pioneers of Gilovich, Vallone & Tversky (1985) to more 
-             contemporary analyses by Miller & Sanjuro (2018). The former’s 
-             results were consistent with the long-standing notion that the percentage 
-             of made shots after a string of made shots is not significantly higher, 
-             with the latter taking the other side and providing evidence that 
-             the hot hand is statistically consistent with expectations. 
-             However, Miller & Sanjuro’s Bayesian application is better 
-             utilized in scenarios that are random chance (e.g. flipping a coin) 
-             rather than skill performance (e.g. muscle memory).",
+           p("There have been numerous studies dedicated to investigating the 
+             Hot Hand, from the pioneers of Gilovich, Vallone & Tversky (1985) 
+             to more contemporary analyses by Miller & Sanjuro (2018). The former’s 
+             results were consistent with the long-standing notion that the 
+             percentage of shots made following a previous string of made shots 
+             is not significantly higher. The latter study concluded otherwise 
+             and provided evidence that the Hot Hand theory is statistically 
+             consistent with expectations. But Miller & Sanjuro’s Bayesian 
+             application is best used in random chance scenarios 
+             (e.g., flipping a coin), as opposed to skill-based performance 
+             employing muscle memory.",
              style= "font-size:16px; font-family:Arial;color:black"),
-           p("In the past, I have analyzed NBA shot data from the ESPN play-by-play 
-             archives to investigate player field goal percentages after strings 
-             of misses and makes. My work did not yield evidence that shooters 
-             are statistically more likely to make their next shot after a 
-             string of makes or misses. However, there was minimal evidence of 
-             a “rubber band” effect where some of the best shooters in the league 
-             had a significantly greater chance of making their next shot after 
-             missing 3 or more shots in a row. Overall, my findings were 
-             consistent with that of Gilovich, Vallone & Tversky. Eighteen months 
-             later, after coming across some SportVU Game Logs from the 2015-16 
-             NBA Season, I started re-working my Hot Hand analysis.",
+           p("I have previously analyzed NBA shot data from ESPN game archives to 
+             investigate player field goal percentages following strings 
+             of misses and makes. My work did not yield much evidence that shooters 
+             are statistically more likely to make their next shot after a string 
+             of makes or misses. But there was some minimal evidence of a 
+             “rubber band” effect, in which some of the better shooters in the 
+             league had a significantly greater chance of making their next shot 
+             after missing 3 or more shots in a row. Overall, my findings were 
+             consistent with that of Gilovich, Vallone & Tversky. Eighteen 
+             months later, after coming across some SportVU Game Logs from the 
+             2015-16 NBA Season, I decided to revisit my Hot Hand analysis.",
              style= "font-size:16px; font-family:Arial;color:black"),
-        
            strong("Tab 1: 2015-21 Shot Charts",style = "font-size:24px;font-family:Georgia; color:black; font-style: italic"),
            br(),
            p("The first tab of this application is a visualization tool that 
              displays how players shoot relative to league average from every 
-             spot on the court, after a particular streak. To keep bins from 
+             spot on the court, following a particular streak. To keep bins from 
              getting too small (players don’t often make 7 shots in a row), 
-             I categorized shots as being one of 1, 2, or 3+ Makes or Misses. 
+             I categorized shots as being one of 1, 2, or 3+, Makes or Misses. 
              In an attempt to compare apples to apples, players are compared to 
              league average after the same streak, rather than the base league 
              average (e.g. Player X after 3+ Makes is compared to how the league 
              shot after 3+ Makes).",
              style= "font-size:16px; font-family:Arial;color:black"),
-           p("This tool by itself falls prey to the same limitations that all 
-           shot charts do, in the sense that the dots on the court contain no 
-           information about how that shot transpired. So while it may be useful 
-           for opponents to know that Klay Thompson had a +15 FG% relative to 
+           p("This tool by itself suffers from the same limitations that all 
+             shot charts do, in that the dots on the court offer no information 
+             regarding how the shot transpired. So while it may be useful for 
+             opponents to know that Klay Thompson had a +15 FG% relative to 
              league average on all above the break 3s after 3+ Makes in 2016-17, 
-             there is still much more information to be gathered about the sets 
-             and actions used by the Warriors to create the attempts for Klay, 
-             or the defensive scheme ran against each shot. Joining these shots 
-             locations with the corresponding film clips would be a logical 
-             extension of this analysis.",
+             there is still more information required regarding the Warriors’ 
+             sets and actions that created those attempts for Klay. One would 
+             also need to know the defensive schemes that were used to defend 
+             each shot. Joining the subject shot locations with the corresponding 
+             film clips would be a logical extension of this analysis.",
              style= "font-size:16px; font-family:Arial;color:black"),
-           
            strong("Tab 2: 2015-16 SportVU Tracking Hot Hand",style = "font-size:24px;font-family:Georgia; color:black; font-style: italic"),
            br(),
            p("The second tab of this application summarizes my results of joining 
              the 2015-16 SportVU Game Logs with shot location data. What made 
-             the player tracking data so interesting to apply to the Hot Hand is 
-             that I could add the nuance of closest defender distance into my 
-             calculations. This boils the fallacy down into its basic parts, 
-             helping inch towards the question: “Does Player X have a higher chance of 
-             making more difficult shots after a string of makes?”", 
+             the player tracking data so interesting for my Hot Hand analysis was 
+             how I could add the nuance of closest defender distance into the 
+             calculations. This tweak boils the Hot Hand down to its basic parts, 
+             and helps answer the question: “Does Player X have a higher chance 
+             of making more difficult shots after a string of makes?”", 
              style= "font-size:16px; font-family:Arial;color:black"),
-           p("As I began my research, I quickly noticed the high frequency of 
-             discrepancies between the SportVU logs and shot location data. 
-             This, on top of the data lacking information about when exactly 
-             each shot occurred and random instances of the game clock column 
-             being off by as much as a minute, presented interesting challenges. 
-             Needing the correct shot time was crucial for my investigation, as 
-             it is the only way to calculate closest defender distance from the 
-             raw tracking data. The times in the shot locations dataset unfortunately 
-             originate from play-by-play data, which typically list an event’s 
-             time approximately 2 or 3 seconds after a shot occurs. In order to 
+           p("Early in the research, I noticed the high frequency of discrepancies 
+             between the SportVU logs and the shot location data. This, 
+             the data’s lack of information regarding when exactly each shot 
+             occurred, as well as random instances of game clock discrepancies 
+             of up to one minute, presented interesting challenges. The correct 
+             shot time was crucial for my investigation, since it is the only 
+             way to calculate closest defender distance from the raw tracking 
+             data. The times in the shot location dataset unfortunately originate 
+             from play-by-play data, which typically lists an event’s time 
+             approximately 2 or 3 seconds after a shot occurs. In order to 
              find shot times, I created a proxy. My proxy was built from the 
              distance between the ball and the shooter, along with the play-by-play 
-             event time. For each shot, I took the latest time (minimum on game clock) 
-             where the Euclidean distance between ball and shooter was less than 1.5 
-             while the game clock was still before the play-by-play event time. 
-             This method yielded pretty accurate results upon cross-validating my 
-             generated shot times with Synergy game film. However, some of the 
-             SportVU data was particularly messy, with game clock columns 
-             borderline unsalvageable. A characteristic of these messy logs 
-             were a large difference between the actual amount of shots taken 
-             in the game (amount of shots reflected in the shot location data) 
-             and the amount of shots generated by my proxy. To account for this, 
-             I created a “quality” threshold where my program only accepted shots 
-             from games where this difference was below 30. One of my principles 
-             for this project was quality over quantity, as I would rather 
-             have 10,000 shots with accurate closest defender distances than 
-             100,000 shots with inaccurate defender distances.",
+             event time. For each shot, I took the latest time 
+             (minimum on game clock) where the Euclidean distance between the ball 
+             and the shooter was less than 1.5, and the game clock was still 
+             prior to the play-by-play event time. This formula yielded fairly 
+             accurate results upon cross-validating my generated shot times 
+             with Synergy game film. But some of the SportVU data was particularly 
+             messy, with game clock columns bordering on unsalvageable. A characteristic 
+             of these messy logs was a large difference between the actual amount of 
+             shots taken in the game (amount of shots reflected in the shot 
+             location data) and the amount of shots generated by my proxy. To 
+             account for this, I created a “quality” threshold where my program 
+             only accepted shots from games where this difference was less than 30. 
+             One of my principles for this project was quality over quantity, since 
+             I would rather have 10,000 shots with accurate closest defender 
+             distances than 100,000 shots with inaccurate defender distances.",
              style= "font-size:16px; font-family:Arial;color:black"),
-           p("Of course, there has been much discourse over the accuracy of 
-             defender distances in general, even with the private Second Spectrum 
-             employed by the league today. Defender wingspan and late contests 
-             can make one “Open” look a lot more contested than a different “Open” 
-             one. Additionally, different arenas have been known to have more or 
-             less variation in their tracking cameras, further muddying up the 
-             information that can be taken away. My proxy is far from perfect, 
-             much like how the current way of measuring openness of shots 
-             withholds flaws. My program ended up recording 46,405 shots from 
-             the 636 available game logs. Even if my program perfectly recorded 
-             every single shot from those 636 games, the sample sizes are quite 
-             small here. The game logs range from the first game of the 15-16 
-             season in October up to January 23rd, so at best this is about half 
-             a season of data. In an attempt to make the bins at least a little 
-             bigger, I condensed the commonplace coverage bins of Wide Open, Open, 
-             Tight, and Very Tight to Open and Tight. One silver lining is many 
-             players have enough total FGAs in this dataset to reach the “stabilization” 
-             point of FG%, which is approximately ~102 attempts based on Kostya Medvedovsky’s work. 
+           p("Much has been said about the questionable accuracy of tracking defender 
+             distances in general, even with the Second Spectrum data used 
+             by the Association today. Defender wingspan and late contests can 
+             make one “Open” a lot more contested than another. Additionally, 
+             different arenas have been known to offer more or less variation 
+             in their tracking cameras, which further muddies the insights 
+             that can be taken away. My program ended up recording 46,405 shots 
+             from the 636 available 
+             game logs. Even if my method recorded every single shot perfectly 
+             from those 636 games, the sample sizes here are still quite small. The 
+             game logs range from the opening game of the 2015-16 season, to 
+             January 23, 2016 – half a season’s worth of data, at best. In an 
+             attempt to make the bins a little bigger, I condensed the commonplace 
+             coverage bins of Wide Open, Open, Tight, and Very Tight to Open and 
+             Tight. One silver lining is that many players have enough total FGAs 
+             in this dataset to reach the “stabilization” point of FG%, which 
+             is approximately ~102 attempts based on Kostya Medvedovsky’s work. 
              Another caveat I will mention here is not all “Tight” attempts are 
-             created equal. A Tight attempt from 24 feet is a much tougher shot 
-             than a Tight attempt from 4 feet away. However the samples would 
-             become even smaller if I filtered out attempts from a certain 
-             threshold of shot distance, so I decided against this.",
+             created equal. A Tight attempt from 24 feet is a much 
+             tougher shot than a Tight attempt from 4 feet away. However 
+             the samples would be even smaller if I filtered out attempts from a 
+             certain threshold of shot distance, so I decided against this.",
              style= "font-size:16px; font-family:Arial;color:black"),
            strong("Acknowledgements",style = "font-size:20px;font-family:Georgia; color:black; font-style: italic"),
            br(),
            p("The SportVU game logs I used are courtesy of", a("Neil Seward", href="https://github.com/sealneaward", target="_blank"), "at his 
-             GitHub. Neil also provided some great frameworks for cleaning and 
-             extracting the game logs that I used in my process. Shot location data 
+             GitHub. Neil also provided some great framework for cleaning and 
+             extracting the game logs that I used in my analysis Shot location data 
              came way of", a("Alex Bresler", href="https://github.com/abresler", target="_blank"), "and nbastatR.",
              style= "font-size:16px; font-family:Arial;color:black"),
            p("I drew a lot of inspiration from various titans in the analytics space. I’ve already mentioned", 
            a("Kostya", href="https://kmedved.com/2020/08/06/nba-stabilization-rates-and-the-padding-approach/", target="_blank"), "and his work about padding and 
-             stabilization. The format of his and Andrew Patton’s current", 
+             stabilization. The format from Kostya and Andrew Patton’s current", 
              a("DARKO",href = "https://apanalytics.shinyapps.io/DARKO/", target="_blank"),
-             "player projections inspired how I wanted to build my table 
-             in the second tab.",a("Owen Phillips", href = "https://thef5.substack.com/people/479475-owen-phillips", target="_blank"), "over at his Substack has a great 
+             "player projections influenced how I built my table 
+             in the second tab.",a("Owen Phillips", href = "https://thef5.substack.com/people/479475-owen-phillips", target="_blank"), "at his Substack has a great 
              tutorial on working with hexbin data with R and using it for shot 
              charts, and great R tutorials in general. Finally, thank you to the
-             groundbreakers of Gilovich and co who took the first stab at 
+             groundbreakers of Gilovich and company, who took the first stab at 
              investigating the Hot Hand phenomenon.",
              style= "font-size:16px; font-family:Arial;color:black")),
   
@@ -225,7 +225,6 @@ ui <- navbarPage(
                      br(),
                      withSpinner(DT::dataTableOutput("table2")),
                      width = 15)))
-           #tags$head(tags$style(HTML( '.has-feedback .form-control { padding-right: 0px;}'
                       
   
   
